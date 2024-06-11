@@ -5,10 +5,11 @@ class Book {
   #pages;
   #words;
   
-  constructor(title, author, pages) {
+  constructor(title, author, pages, words) {
     this.setTitle(title);
     this.setAuthor(author);
     this.setPages(pages);
+    this.setWords(words);
   }
 
   getTitle() {
@@ -24,7 +25,7 @@ class Book {
   }
 
   getWords() {
-    // TODO
+    return this.#words;
   }
 
   setTitle(title) {
@@ -51,25 +52,39 @@ class Book {
 
   setPages(pages) {
     if (typeof (pages) !== 'number' || isNaN(pages)) {
-      throw new Error()
+      throw new Error();
     }
     if (pages < 1) {
-      throw new Error()
+      throw new Error();
     }
     pages = Math.trunc(pages);
     this.#pages = pages;
   }
 
-  setWords() {
-    // TODO
+  setWords(words) {
+    if (typeof (words) !== 'number' || isNaN(words)) {
+      throw new Error();
+    }
+
+    //La cantidad de palabras no debe ser negativa, no tendría sentido
+    if (words < 0) {
+      throw new Error();
+    }
+
+    //Al tratarse de una cantidad de elementos, el número debe ser entero.
+    words = Math.trunc(words);
+
+    this.#words = words;
   }
 
-  wordsPerPage() {
-    // TODO
+  //Asumo que el libro tiene una distribución más o menos regular de palabras por página.
+  //Asumo que no hay secciones del libro con imágenes que ocupen gran parte de la página.
+  wordsPerPage() {    
+    return this.#words / this.#pages;
   }
 
   toString() {
-    return `Título: ${this.#title} Autor: ${this.#author} Páginas: ${this.#pages}`;
+    return `Título: ${this.#title} Autor: ${this.#author} Páginas: ${this.#pages} Palabras: ${this.#words}`;
   }
 }
 

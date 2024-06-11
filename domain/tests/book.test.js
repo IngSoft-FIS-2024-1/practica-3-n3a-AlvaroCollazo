@@ -5,7 +5,7 @@ describe('Book', () => {
   let myBook;
 
   beforeEach(() => {
-    myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350);
+    myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350, 10000);
   });
 
   it('return the correct title', () => {
@@ -21,26 +21,28 @@ describe('Book', () => {
   });
 
   it('check title is a string', () => {
-    expect(() => myBook = new Book(451, 1, 350)).toThrow();
+    expect(() => myBook = new Book(451, 'Cervantes', 350, 10000)).toThrow();
   });
 
   it('check title is not empty', () => {
-    expect(() => myBook = new Book('', 'Horacio Quiroga', 350)).toThrow();
+    expect(() => myBook = new Book('', 'Horacio Quiroga', 350, 10000)).toThrow();
   });
 
   it('check author is a string', () => {
-    // TODO
+    expect(() => myBook = new Book('Harry Potter', 1, 350, 10000)).toThrow();
   });
 
   it('check page param is a number', () => {
-    // TODO
+    expect(() => myBook = new Book('The Hobbit', 'Tolkien', '0', 10000)).toThrow();
   });
 
   it('check pages not < 1', () => {
-    // TODO
+    expect(() => myBook = new Book('The Hobbit', 'Tolkien', 0, 10000)).toThrow();
   });
+
   it('toString()', () => {
-    // TODO
+    new Book('Cuentos de la Selva', 'Horacio Quiroga', 350, 10000)
+    expect(this.myBook.toString() == 'Título: Cuentos de la Selva Autor: Horacio Quiroga Páginas: 350 Palabras: 10000');
   });
 
 });
