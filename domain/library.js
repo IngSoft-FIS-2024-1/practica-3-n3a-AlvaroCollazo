@@ -5,7 +5,7 @@ class Library {
   #name;
   #inventory = [];
   #totalWords;
-  #wordCount;
+  //Borré wordCount porque no llego a usarla.
 
   constructor(name) {
     this.setName(name);
@@ -40,11 +40,11 @@ class Library {
   }
 
   totalWords() {
-    acum = 0;
-    #inventory.forEach(element => {
-      acum = acum + element.words;
+    this.#totalWords = 0;
+    this.#inventory.forEach(element => {
+      this.#totalWords = this.#totalWords + element.words;
     });
-    return acum;
+    
   }
 }
 
