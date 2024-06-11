@@ -41,11 +41,11 @@ class Book {
 
   setAuthor(author) {
     if (typeof (author) !== 'string') {
-      throw new Error()
+      throw new Error();
     }
     author = author.trim();
     if (author.length === 0) {
-      author = "Anónimo";
+      author = 'Anónimo';
     }
     this.#author = author;
   }

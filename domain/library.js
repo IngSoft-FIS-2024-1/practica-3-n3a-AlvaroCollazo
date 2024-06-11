@@ -9,15 +9,16 @@ class Library {
 
   constructor(name) {
     this.setName(name);
+    this.addBook('La Biblia', 'Dios', 400, 9999);
   }
 
   setName(name) {
-    if (typeof (name) !== "string") {
-      throw new Error()
+    if (typeof (name) !== 'string') {
+      throw new Error();
     }
     name = name.trim();
     if (name.length === 0) {
-      throw new Error()
+      throw new Error();
     }
     this.#name = name;
   }
@@ -42,8 +43,9 @@ class Library {
   totalWords() {
     this.#totalWords = 0;
     this.#inventory.forEach(element => {
-      this.#totalWords = this.#totalWords + element.words;
+      this.#totalWords += element.getWords();      
     });
+    return this.#totalWords;
     
   }
 }
